@@ -59,6 +59,7 @@ class Certificate
         $signatureValue = '';
         $pkeyId = openssl_get_privatekey($baseInformation->getCertificate());
         openssl_sign($content, $signatureValue, $pkeyId, OPENSSL_ALGO_SHA1);
+        // an issue points to deprecated code here https://github.com/kaio-souza/NotaFiscalSP/issues/11
         openssl_free_key($pkeyId);
         return base64_encode($signatureValue);
     }
